@@ -1,4 +1,4 @@
-This modules prints:
+This module prints:
 * the virtual and physical KASLR offsets
 * the virtual offsets of the randomized memory regions
 * the IRQ stack cookie of each logical CPU
