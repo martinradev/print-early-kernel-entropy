@@ -48,7 +48,7 @@ static int __init print_kaslr_offsets_init(void)
 	 for_each_process(p)
 	 {
 		printk(PRINT_KASLR_ADDRESS "Task pid %d. canary: %lx", p->pid, p->stack_canary);
-		if (++process_idx > 16)
+		if (++process_idx >= 16)
 		{
 			break;
 		}
