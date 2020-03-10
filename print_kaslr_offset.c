@@ -35,11 +35,15 @@ static int __init print_kaslr_offsets_init(void)
 	 printk(PRINT_KASLR_ADDRESS "vmalloc_base: %lx\n", vmalloc_base);
 	 printk(PRINT_KASLR_ADDRESS "vmemmap_base: %lx\n", vmemmap_base);
 
+     // Unfortunately, on 4.15.0 the irq_stack_union per-CPU symbol doesn't seem to be accessible.
+     // This is a temporary hack to make the module loadable.
+#if 0
 	 for_each_present_cpu(cpu)
 	 {
 		canary = per_cpu(irq_stack_union.stack_canary, cpu);	
 		printk(PRINT_KASLR_ADDRESS "boot/irq_stack cpu %d canary: %lx\n", cpu, canary);
 	 }
+#endif
 
 	 for_each_process(p)
 	 {
